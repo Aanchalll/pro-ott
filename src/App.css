@@ -32,7 +32,42 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.clild-carousel span {
+  color: white;
+  opacity: 0;
+  display: none
+}
+
+.clild-carousel:hover {
+  transform: scale(1.1);
+  z-index: 1000;
+}
+
+.clild-carousel:hover img {
+  opacity: 0.3;
+}
+
+.clild-carousel:hover span {
+  opacity: 1;
+  color: black;
+  padding: 20px;
+  display: block;
+}
+
+.main-carousel:hover h2 {
+  opacity: 1;
+  color: #1976d2;
+  display: block;
+  font-style: italic;
+}
+
+.main-carousel:hover img {
+  opacity: 0.6;
 }
