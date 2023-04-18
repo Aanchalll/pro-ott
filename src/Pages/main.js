@@ -71,6 +71,45 @@ function Layout(props) {
           </ListItem>
         ))}
       </List>
+      <Divider
+        sx={{
+          display: {
+            xs: "block",
+            sm: "block",
+            md: "block",
+            md: "block",
+            lg: "none",
+          },
+        }}
+      />
+      <List
+        sx={{
+          display: {
+            xs: "block",
+            sm: "block",
+            md: "block",
+            md: "block",
+            lg: "none",
+          },
+        }}
+      >
+        {["Home", "Shows", "Movies", "Comedy", "News"].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index == 0 ? (
+                  <MovieFilterIcon />
+                ) : index == 1 ? (
+                  <TranslateIcon />
+                ) : (
+                  <LocalMoviesIcon />
+                )}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
     </div>
   );
 
@@ -99,43 +138,47 @@ function Layout(props) {
           >
             <MenuIcon />
           </IconButton>
-          {/* <Typography variant="h6" noWrap component="div"> */}
           <Grid
             container
             justifyContent="space-between"
             alignItems="center"
             spacing={1}
           >
-            <Grid item xs={7} lg={6.5}>
-              <Grid container>
-                {[
-                  "Home",
-                  "Shows",
-                  "Movies",
-                  "Comedy",
-                  "News",
-                ].map((index) => {
+            <Grid item xs={0} md={3} lg={6.5}>
+              <Grid
+                container
+                sx={{
+                  display: {
+                    xs: "none",
+                    sm: "none",
+                    md: "none",
+                    md: "none",
+                    lg: "flex",
+                  },
+                }}
+              >
+                {["Home", "Shows", "Movies", "Comedy", "News"].map((index) => {
                   return (
                     <Grid item xs={2.2}>
                       {index}
-                      {/* sx={{display:{xs:'none', md:''}}} */}
                     </Grid>
                   );
                 })}
               </Grid>
             </Grid>
-            <Grid item xs={2.5} lg={2}>
+            <Grid item xs={6} md={5}  lg={2}>
               <TextField
                 id="outlined-basic"
                 label="Search"
                 variant="outlined"
                 size="small"
+                fullWidth
               />
             </Grid>
-            <Grid item xs={1} lg={1.5}>
+            <Grid item xs={2} md={2}  lg={1.5} align={'right'}>
               <Button>Login</Button>
             </Grid>
-            <Grid item xs={1.5} lg={1.5}>
+            <Grid item xs={4} md={2}  lg={1.5} align={'right'}>
               <Button>Subscribe</Button>
             </Grid>
           </Grid>
@@ -200,9 +243,7 @@ function Layout(props) {
           <MainCarousel
             infiniteLoop
             autoPlay={true}
-            //   centerMode={true}
             showThumbs={false}
-            // dynamicHeight={true}
             style={{
               height: "100px !important",
               ".carousel-root .carousel-slider": {
@@ -213,7 +254,7 @@ function Layout(props) {
             {Data?.sliderImages.map((row, index) => {
               const { src, description, label } = row;
               return (
-                <div key={index} class='main-carousel'>
+                <div key={index} className="main-carousel">
                   <img src={src} style={{ height: "25em" }} />
                   <span
                     className="legend"
@@ -302,10 +343,7 @@ const CarouselFunction = (props) => {
         return array?.map((row, index) => {
           const { src, description, label } = row;
           return (
-            <div
-              key={index}
-              class="clild-carousel"
-            >
+            <div key={index} className="clild-carousel">
               <img src={src} style={{ width: "20em", height: "15em" }} />
               <span
                 style={{
@@ -313,9 +351,11 @@ const CarouselFunction = (props) => {
                   left: 0,
                   top: 10,
                   width: "100%",
-                  textAlign: "center"
+                  textAlign: "center",
                 }}
-              >  <Typography variant="h5"> {label}</Typography>
+              >
+                {" "}
+                <Typography variant="h5"> {label}</Typography>
               </span>
               <span
                 style={{
