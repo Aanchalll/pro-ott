@@ -55,7 +55,7 @@ function Layout(props) {
       <Divider />
       <List>
         {["Channels", "Languages", "Genres"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+          <ListItem key={index+'hey4'} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {index == 0 ? (
@@ -94,7 +94,7 @@ function Layout(props) {
         }}
       >
         {["Home", "Shows", "Movies", "Comedy", "News"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+          <ListItem key={index+'hey6'} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {index == 0 ? (
@@ -159,7 +159,7 @@ function Layout(props) {
               >
                 {["Home", "Shows", "Movies", "Comedy", "News"].map((index) => {
                   return (
-                    <Grid item xs={2.2}>
+                    <Grid item xs={2.2} key={index+'hey'}>
                       {index}
                     </Grid>
                   );
@@ -254,7 +254,7 @@ function Layout(props) {
             {Data?.sliderImages.map((row, index) => {
               const { src, description, label } = row;
               return (
-                <div key={index} className="main-carousel">
+                <div key={index+'hey2'} className="main-carousel">
                   <img src={src} style={{ height: "25em" }} />
                   <span
                     className="legend"
@@ -338,12 +338,12 @@ const responsive = {
 const CarouselFunction = (props) => {
   const { array } = props;
   return (
-    <Carousel ssr partialVisbile itemClass="image-item" responsive={responsive}>
+    <Carousel ssr partialVisibile itemClass="image-item" responsive={responsive}>
       {array?.map((image) => {
         return array?.map((row, index) => {
           const { src, description, label } = row;
           return (
-            <div key={index} className="clild-carousel">
+            <div key={index+'hey5'} className="clild-carousel">
               <img src={src} style={{ width: "20em", height: "15em" }} />
               <span
                 style={{
