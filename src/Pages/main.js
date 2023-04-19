@@ -23,7 +23,6 @@ import { Data } from "../util/Data";
 import { Button, Grid, TextField } from "@mui/material";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Link } from "react-router-dom";
 
 const drawerWidth = 180;
 const StdbgColor = "#F0F8FF";
@@ -58,9 +57,9 @@ function Layout(props) {
           <ListItem key={index + 'hey4'} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index == 0 ? (
+                {index === 0 ? (
                   <MovieFilterIcon />
-                ) : index == 1 ? (
+                ) : index === 1 ? (
                   <TranslateIcon />
                 ) : (
                   <LocalMoviesIcon />
@@ -97,9 +96,9 @@ function Layout(props) {
           <ListItem key={index + 'hey6'} disablePadding>
             <ListItemButton to={row.link}>
               <ListItemIcon>
-                {index == 0 ? (
+                {index === 0 ? (
                   <MovieFilterIcon />
-                ) : index == 1 ? (
+                ) : index === 1 ? (
                   <TranslateIcon />
                 ) : (
                   <LocalMoviesIcon />
@@ -153,7 +152,7 @@ function Layout(props) {
                     xs: "none",
                     sm: "none",
                     md: "none",
-                    md: "none",
+                    xl: "flex",
                     lg: "flex",
                   },
                 }}
