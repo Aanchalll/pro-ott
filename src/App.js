@@ -1,10 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
 import Layout from './Pages/main';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <Layout/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Layout />} />
+          <Route path="/home" element={<Layout />} />
+          <Route path="/shows" element={<Layout />} />
+          <Route path="/movies" element={<Layout />} />
+          <Route path="/comedy" element={<Layout />} />
+          <Route path="/news" element={<Layout />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

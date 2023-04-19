@@ -6,7 +6,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -24,6 +23,7 @@ import { Data } from "../util/Data";
 import { Button, Grid, TextField } from "@mui/material";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 180;
 const StdbgColor = "#F0F8FF";
@@ -55,7 +55,7 @@ function Layout(props) {
       <Divider />
       <List>
         {["Channels", "Languages", "Genres"].map((text, index) => (
-          <ListItem key={index+'hey4'} disablePadding>
+          <ListItem key={index + 'hey4'} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {index == 0 ? (
@@ -77,7 +77,7 @@ function Layout(props) {
             xs: "block",
             sm: "block",
             md: "block",
-            md: "block",
+            xl: "none",
             lg: "none",
           },
         }}
@@ -88,14 +88,14 @@ function Layout(props) {
             xs: "block",
             sm: "block",
             md: "block",
-            md: "block",
+            xl: "none",
             lg: "none",
           },
         }}
       >
-        {["Home", "Shows", "Movies", "Comedy", "News"].map((text, index) => (
-          <ListItem key={index+'hey6'} disablePadding>
-            <ListItemButton>
+        {Data.HeaderOptions.map((row, index) => (
+          <ListItem key={index + 'hey6'} disablePadding>
+            <ListItemButton to={row.link}>
               <ListItemIcon>
                 {index == 0 ? (
                   <MovieFilterIcon />
@@ -105,7 +105,7 @@ function Layout(props) {
                   <LocalMoviesIcon />
                 )}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={row.label} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -119,6 +119,7 @@ function Layout(props) {
   return (
     <Box sx={{ display: "flex", backgroundColor: StdbgColor, color: "black" }}>
       <CssBaseline />
+      {/* Appbar : lg screens */}
       <AppBar
         position="fixed"
         sx={{
@@ -157,16 +158,18 @@ function Layout(props) {
                   },
                 }}
               >
-                {["Home", "Shows", "Movies", "Comedy", "News"].map((index) => {
+                {Data.HeaderOptions.map((row, index) => {
                   return (
-                    <Grid item xs={2.2} key={index+'hey'}>
-                      {index}
+                    <Grid item xs={2.2} key={index + 'hey'}>
+                      <Button variant="text" to={row.link}>
+                        {row.label}
+                      </Button>
                     </Grid>
                   );
                 })}
               </Grid>
             </Grid>
-            <Grid item xs={6} md={5}  lg={2}>
+            <Grid item xs={6} md={5} lg={2}>
               <TextField
                 id="outlined-basic"
                 label="Search"
@@ -175,15 +178,17 @@ function Layout(props) {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={2} md={2}  lg={1.5} align={'right'}>
+            <Grid item xs={2} md={2} lg={1.5} align={'right'}>
               <Button>Login</Button>
             </Grid>
-            <Grid item xs={4} md={2}  lg={1.5} align={'right'}>
+            <Grid item xs={4} md={2} lg={1.5} align={'right'}>
               <Button>Subscribe</Button>
             </Grid>
           </Grid>
         </Toolbar>
       </AppBar>
+
+      {/* Side navbar : lg screens */}
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -254,8 +259,8 @@ function Layout(props) {
             {Data?.sliderImages.map((row, index) => {
               const { src, description, label } = row;
               return (
-                <div key={index+'hey2'} className="main-carousel">
-                  <img src={src} style={{ height: "25em" }} />
+                <div key={index + 'hey2'} className="main-carousel">
+                  <img src={src} alt="" style={{ height: "70vh " }} />
                   <span
                     className="legend"
                     style={{
@@ -318,11 +323,11 @@ export default Layout;
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
+    breakpoint: { max: 4000, min: 1536 },
     items: 4,
   },
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
+    breakpoint: { max: 1536, min: 1024 },
     items: 3,
   },
   tablet: {
@@ -343,8 +348,8 @@ const CarouselFunction = (props) => {
         return array?.map((row, index) => {
           const { src, description, label } = row;
           return (
-            <div key={index+'hey5'} className="clild-carousel">
-              <img src={src} style={{ width: "20em", height: "15em" }} />
+            <div key={index + 'hey5'} className="clild-carousel">
+              <img src={src} style={{ width: "100%", height: "15em" }} alt=""/>
               <span
                 style={{
                   position: "absolute",
