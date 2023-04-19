@@ -71,3 +71,15 @@
 .main-carousel:hover img {
   opacity: 0.6;
 }
+
+.button-animation:hover  {
+  background-color: #1976d2 !important;
+  color:white;
+  font-weight:600
+}
+
+.button-animation-1  {
+  background-color: #1976d2 !important;
+  color:white !important;
+  font-weight:600
+}
