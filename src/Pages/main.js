@@ -243,16 +243,16 @@ function Layout(props) {
         <Toolbar />
 
         {/* Main Carousel- Image slider */}
-        <Box sx={{ height: "20%", overflow: "hidden", marginBottom: "4%" }}>
+        <Box sx={{ overflow: "hidden", marginBottom: "4%" }}>
           <MainCarousel
             infiniteLoop
             autoPlay={true}
             showThumbs={false}
             style={{
-              height: "100px !important",
-              ".carousel-root .carousel-slider": {
-                height: "100px !important",
-              },
+              // height: "100px !important",
+              // ".carousel-root .carousel-slider": {
+              //   height: "100px !important",
+              // },
             }}
           >
             {Data?.sliderImages.map((row, index) => {
@@ -326,29 +326,30 @@ const responsive = {
     items: 4,
   },
   desktop: {
-    breakpoint: { max: 1536, min: 1024 },
+    breakpoint: { max: 1536, min: 900 },
     items: 3,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 900, min: 600 },
     items: 2,
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
+    breakpoint: { max: 600, min: 0 },
+    items: 2,
   },
 };
  
 const CarouselFunction = (props) => {
   const { array } = props;
+  // partialVisibile // ssr
   return (
-    <Carousel ssr partialVisibile itemClass="image-item" responsive={responsive}>
+    <Carousel   itemClass="image-item" responsive={responsive}>
       {array?.map((image) => {
         return array?.map((row, index) => {
           const { src, description, label } = row;
           return (
-            <div key={index + 'hey5'} className="clild-carousel">
-              <img src={src} style={{ width: "100%", height: "15em" }} alt=""/>
+            <div key={index + 'hey5'} className="clild-carousel" draggable={false}  >
+              <img src={src} style={{ width: "auto", height: "20vw" }} alt=""/>
               <span
                 style={{
                   position: "absolute",
@@ -358,7 +359,6 @@ const CarouselFunction = (props) => {
                   textAlign: "center",
                 }}
               >
-                {" "}
                 <Typography variant="h5"> {label}</Typography>
               </span>
               <span
