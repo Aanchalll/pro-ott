@@ -65,7 +65,7 @@ export const Data = {
       id: 0,
       label: "Puss In Boots",
       src: "/puss-in-boots.webp",
-      description: "Puss in Boots discovers that his passion for adventure has taken its toll when he learns that he has burnt through eight of his nine lives. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives."
+      description: " Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives."
     },
     {
       id: 0,
@@ -99,7 +99,7 @@ export const Data = {
   NewUpcoming: [
     {
       id: 0,
-      label: "Spider-Man: Across the Spider-Verse",
+      label: "Spider-Man",
       src: "/spider-man.webp",
       iconName: "LocalMoviesIcon",
       description: "After reuniting with Gwen Stacy, Brooklyn's full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence."

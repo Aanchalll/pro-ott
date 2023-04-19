@@ -45,10 +45,10 @@
   display: none
 }
 
-.clild-carousel:hover {
+/* .clild-carousel:hover {
   transform: scale(1.1);
   z-index: 1000;
-}
+} */
 
 .clild-carousel:hover img {
   opacity: 0.3;
@@ -58,6 +58,7 @@
   opacity: 1;
   color: black;
   padding: 20px;
+  transform: scale(1.1);
   display: block;
 }
 

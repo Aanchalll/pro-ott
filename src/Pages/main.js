@@ -54,7 +54,7 @@ function Layout(props) {
       <Divider />
       <List>
         {["Channels", "Languages", "Genres"].map((text, index) => (
-          <ListItem key={index + 'hey4'} disablePadding>
+          <ListItem key={index + "hey4"} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {index === 0 ? (
@@ -93,7 +93,7 @@ function Layout(props) {
         }}
       >
         {Data.HeaderOptions.map((row, index) => (
-          <ListItem key={index + 'hey6'} disablePadding>
+          <ListItem key={index + "hey6"} disablePadding>
             <ListItemButton to={row.link}>
               <ListItemIcon>
                 {index === 0 ? (
@@ -142,7 +142,7 @@ function Layout(props) {
             container
             justifyContent="space-between"
             alignItems="center"
-            spacing={{xs:0,sm:0, md:1}}
+            spacing={{ xs: 0, sm: 0, md: 1 }}
           >
             <Grid item xs={0} sm={3} md={5} lg={6.5}>
               <Grid
@@ -159,8 +159,16 @@ function Layout(props) {
               >
                 {Data.HeaderOptions.map((row, index) => {
                   return (
-                    <Grid item xs={2.2} key={index + 'hey'}>
-                      <Button variant="text" to={row.link} className={row.label==='Home'?'button-animation-1':"button-animation"}>
+                    <Grid item xs={2.2} key={index + "hey"}>
+                      <Button
+                        variant="text"
+                        to={row.link}
+                        className={
+                          row.label === "Home"
+                            ? "button-animation-1"
+                            : "button-animation"
+                        }
+                      >
                         {row.label}
                       </Button>
                     </Grid>
@@ -177,10 +185,10 @@ function Layout(props) {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={2} sm={2} md={1} lg={1.5} align={'right'}>
-              <Button  className="button-animation">Login</Button>
+            <Grid item xs={2} sm={2} md={1} lg={1.5} align={"right"}>
+              <Button className="button-animation">Login</Button>
             </Grid>
-            <Grid item xs={4} sm={2} md={1.5} lg={1.5} align={'right'}>
+            <Grid item xs={4} sm={2} md={1.5} lg={1.5} align={"right"}>
               <Button className="button-animation">Subscribe</Button>
             </Grid>
           </Grid>
@@ -238,37 +246,32 @@ function Layout(props) {
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          height: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
         <Toolbar />
 
         {/* Main Carousel- Image slider */}
-        <Box sx={{ overflow: "hidden", marginBottom: "4%" ,height: "50vh !important",  
-        display: {
-            xs: "none",
-            sm: "none",
-            md: "block",
-            xl: "block",
-            lg: "block",
-          },
-        }}
-           >
-          <MainCarousel
-            infiniteLoop
-            autoPlay={true}
-            showThumbs={false}
-            style={{
-            //   height: "100px !important",
-              // ".carousel-root .carousel-slider": {
-              //   height: "100px !important",
-              // },
-            }}
-          >
+        <Box
+          sx={{
+            overflow: "hidden",
+            marginBottom: "4%",
+            height: "60vh !important",
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "block",
+              xl: "block",
+              lg: "block",
+            },
+          }}
+        >
+          <MainCarousel infiniteLoop autoPlay={true} showThumbs={false}>
             {Data?.sliderImages.map((row, index) => {
               const { src, description, label } = row;
               return (
-                <div key={index + 'hey2'} className="main-carousel">
-                  <img src={src} alt="" style={{ height: "50vh " }} />
+                <div key={index + "hey2"} className="main-carousel">
+                  <img src={src} alt="" style={{ height: "60vh " }} />
                   <span
                     className="legend"
                     style={{
@@ -282,7 +285,7 @@ function Layout(props) {
                   >
                     <Typography variant="h2"> {label}</Typography>
                     <h3> {description}</h3>
-                    <Button variant="contained" >Watch Now</Button>
+                    <Button variant="contained">Watch Now</Button>
                   </span>
                 </div>
               );
@@ -291,25 +294,69 @@ function Layout(props) {
         </Box>
 
         {/* Recommended for you */}
-        <Box sx={{ marginBottom: "40px" }}>
+        <Box
+          sx={{
+            marginBottom: "40px",
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "block",
+              xl: "block",
+              lg: "block",
+            },
+          }}
+        >
           <h2>Recommended for you</h2>
           <CarouselFunction array={Data?.Recommended} />
         </Box>
 
         {/* Animated Adventures */}
-        <Box sx={{ marginBottom: "40px" }}>
+        <Box
+          sx={{
+            marginBottom: "40px",
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "block",
+              xl: "block",
+              lg: "block",
+            },
+          }}
+        >
           <h2>Animated Adventures</h2>
           <CarouselFunction array={Data?.AnimatedAdventures} />
         </Box>
 
         {/* Popular Shows/Drama */}
-        <Box sx={{ marginBottom: "40px" }}>
+        <Box
+          sx={{
+            marginBottom: "40px",
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "block",
+              xl: "block",
+              lg: "block",
+            },
+          }}
+        >
           <h2>Popular Shows/Drama</h2>
           <CarouselFunction array={Data?.Popular} />
         </Box>
 
         {/* New & Upcoming */}
-        <Box sx={{ marginBottom: "40px" }}>
+        <Box
+          sx={{
+            marginBottom: "40px",
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "block",
+              xl: "block",
+              lg: "block",
+            },
+          }}
+        >
           <h2>New & Upcoming</h2>
           <CarouselFunction array={Data?.NewUpcoming} />
         </Box>
@@ -347,18 +394,21 @@ const responsive = {
     items: 2,
   },
 };
- 
+
 const CarouselFunction = (props) => {
   const { array } = props;
-  // partialVisibile // ssr
   return (
-    <Carousel   itemClass="image-item" responsive={responsive}>
+    <Carousel itemClass="image-item" responsive={responsive}>
       {array?.map((image) => {
         return array?.map((row, index) => {
           const { src, description, label } = row;
           return (
-            <div key={index + 'hey5'} className="clild-carousel" draggable={false}  >
-              <img src={src} style={{ width: "100%", height: "20vh" }} alt=""/>
+            <div
+              key={index + "hey5"}
+              className="clild-carousel"
+              draggable={false}
+            >
+              <img src={src} style={{ width: "100%", height: "30vh" }} alt="" />
               <span
                 style={{
                   position: "absolute",
@@ -368,7 +418,7 @@ const CarouselFunction = (props) => {
                   textAlign: "center",
                 }}
               >
-                <Typography variant="h5"> {label}</Typography>
+                <Typography variant="h6"> {label}</Typography>
               </span>
               <span
                 style={{
