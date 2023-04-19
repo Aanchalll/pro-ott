@@ -160,7 +160,7 @@ function Layout(props) {
                 {Data.HeaderOptions.map((row, index) => {
                   return (
                     <Grid item xs={2.2} key={index + 'hey'}>
-                      <Button variant="text" to={row.link} className={row.label=='Home'?'button-animation-1':"button-animation"}>
+                      <Button variant="text" to={row.link} className={row.label==='Home'?'button-animation-1':"button-animation"}>
                         {row.label}
                       </Button>
                     </Grid>
