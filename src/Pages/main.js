@@ -339,7 +339,7 @@ const responsive = {
     items: 1,
   },
 };
-
+ 
 const CarouselFunction = (props) => {
   const { array } = props;
   return (
