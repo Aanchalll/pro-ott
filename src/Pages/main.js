@@ -1,11 +1,9 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -13,18 +11,15 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MovieFilterIcon from "@mui/icons-material/MovieFilter";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
-import MenuIcon from "@mui/icons-material/Menu";
 import TranslateIcon from "@mui/icons-material/Translate";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Data } from "../util/Data";
-import { Button, Grid, TextField } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { CarouselFunction } from "../Components/SmallCarousel";
 import { LargeCarousel } from "../Components/LargeCarousel";
 import { ProductNavbar } from "../Layout/Navbar";
 import { StdbgColor, drawerWidth } from "../util/constants";
-
 
 function Layout(props) {
   const { window } = props;
