@@ -84,3 +84,7 @@
   color:white !important;
   font-weight:600
 }
+
+.bg-shiney{
+  background-image: url(/public/black-gif.gif);
+}

@@ -43,7 +43,7 @@ function Layout(props) {
   const drawer = (
     <div>
       {/* <Toolbar /> */}
-      <div
+      <div className="bg-shiney"
         style={{
           minHeight: "64px",
           alignItems: "center",
@@ -51,7 +51,7 @@ function Layout(props) {
           display: "flex",
         }}
       >
-        <Typography variant="h6" noWrap component="div">
+        <Typography variant="h6" noWrap component="div" sx={{zIndex:'9999', color:'white'}}>
           PRO OTT
         </Typography>
       </div>
