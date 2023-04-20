@@ -13,6 +13,9 @@ function App() {
           <Route path="/movies" element={<Layout />} />
           <Route path="/comedy" element={<Layout />} />
           <Route path="/news" element={<Layout />} />
+          <Route path="/channels" element={<Layout />} />
+          <Route path="/languages" element={<Layout />} />
+          <Route path="/genres" element={<Layout />} />
         </Route>
       </Routes>
     </BrowserRouter>

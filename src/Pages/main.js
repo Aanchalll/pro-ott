@@ -21,8 +21,8 @@ import { Carousel as MainCarousel } from "react-responsive-carousel"; //
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Data } from "../util/Data";
 import { Button, Grid, TextField } from "@mui/material";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import { useLocation } from "react-router-dom";
+import { CarouselFunction } from "../util/Functions";
 
 const drawerWidth = 180;
 const StdbgColor = "#F0F8FF";
@@ -30,7 +30,8 @@ const StdbgColor = "#F0F8FF";
 function Layout(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const location = useLocation(); 
+  
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -53,9 +54,9 @@ function Layout(props) {
 
       <Divider />
       <List>
-        {["Channels", "Languages", "Genres"].map((text, index) => (
+        {[{label:"Channels",link:'/channels'},{label:"Languages",link:'/languages'}, {label:"Genres",link:'/genres'}].map((row, index) => (
           <ListItem key={index + "hey4"} disablePadding>
-            <ListItemButton>
+            <ListItemButton  to={row.link} className={ row.link === location?.pathname? "button-animation-1" : "button-animation" }>
               <ListItemIcon>
                 {index === 0 ? (
                   <MovieFilterIcon />
@@ -65,7 +66,7 @@ function Layout(props) {
                   <LocalMoviesIcon />
                 )}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={row.label} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -94,7 +95,7 @@ function Layout(props) {
       >
         {Data.HeaderOptions.map((row, index) => (
           <ListItem key={index + "hey6"} disablePadding>
-            <ListItemButton to={row.link}>
+            <ListItemButton to={row.link}  className={ row.link === location?.pathname? "button-animation-1" : "button-animation" }>
               <ListItemIcon>
                 {index === 0 ? (
                   <MovieFilterIcon />
@@ -118,7 +119,7 @@ function Layout(props) {
   return (
     <Box sx={{ display: "flex", backgroundColor: StdbgColor, color: "black" }}>
       <CssBaseline />
-      {/* Appbar : lg screens */}
+      {/* Navbar */}
       <AppBar
         position="fixed"
         sx={{
@@ -164,7 +165,7 @@ function Layout(props) {
                         variant="text"
                         to={row.link}
                         className={
-                          row.label === "Home"
+                          row.link === location?.pathname
                             ? "button-animation-1"
                             : "button-animation"
                         }
@@ -195,13 +196,14 @@ function Layout(props) {
         </Toolbar>
       </AppBar>
 
-      {/* Side navbar : lg screens */}
+       {/* Side navbar */}
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        {/* Side navbar : sm screens */}
         <Drawer
           container={container}
           variant="temporary"
@@ -222,6 +224,8 @@ function Layout(props) {
         >
           {drawer}
         </Drawer>
+
+        {/* Side navbar : lg screens */}
         <Drawer
           className="Bg-color App-link"
           variant="permanent"
@@ -240,6 +244,7 @@ function Layout(props) {
           {drawer}
         </Drawer>
       </Box>
+
       <Box
         component="main"
         sx={{
@@ -249,6 +254,8 @@ function Layout(props) {
           height: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
+      {/* Content */}
+      
         <Toolbar />
 
         {/* Main Carousel- Image slider */}
@@ -345,68 +352,4 @@ Layout.propTypes = {
 
 export default Layout;
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 1536 },
-    items: 4,
-  },
-  desktop: {
-    breakpoint: { max: 1536, min: 900 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 900, min: 600 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 600, min: 0 },
-    items: 1,
-  },
-};
 
-const CarouselFunction = (props) => {
-  const { array } = props;
-  return (
-    <Carousel itemClass="image-item" responsive={responsive}>
-      {array?.map((image) => {
-        return array?.map((row, index) => {
-          const { src, description, label } = row;
-          return (
-            <div
-              key={index + "hey5"}
-              className="clild-carousel"
-              draggable={false}
-            >
-              <img src={src} style={{ width: "100%", height: "30vh" }} alt="" />
-              <span
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  top: 10,
-                  width: "100%",
-                  textAlign: "center",
-                }}
-              >
-                <Typography variant="h6"> {label}</Typography>
-              </span>
-              <span
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  bottom: 0,
-                  width: "100%",
-                  textAlign: "center",
-                  padding: "20px",
-                }}
-              >
-                {" "}
-                <Typography variant="body2"> {description}</Typography>{" "}
-              </span>
-            </div>
-          );
-        });
-      })}
-    </Carousel>
-  );
-};
