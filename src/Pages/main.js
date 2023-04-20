@@ -17,21 +17,25 @@ import MenuIcon from "@mui/icons-material/Menu";
 import TranslateIcon from "@mui/icons-material/Translate";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Carousel as MainCarousel } from "react-responsive-carousel"; //
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Data } from "../util/Data";
 import { Button, Grid, TextField } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import { CarouselFunction } from "../util/Functions";
+import { CarouselFunction } from "../Components/SmallCarousel";
+import { LargeCarousel } from "../Components/LargeCarousel";
+import { ProductNavbar } from "../Layout/Navbar";
+import { StdbgColor, drawerWidth } from "../util/constants";
 
-const drawerWidth = 180;
-const StdbgColor = "#F0F8FF";
 
 function Layout(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const location = useLocation(); 
-  
+  const location = useLocation();
+
+  const SmallImageScroll = [{ label: 'Recommended for you', array: Data?.Recommended },
+  { label: 'Animated Adventures', array: Data?.AnimatedAdventures },
+  { label: 'Popular Shows/Drama', array: Data?.Popular },
+  { label: 'New & Upcoming', array: Data?.NewUpcoming }]
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -54,9 +58,9 @@ function Layout(props) {
 
       <Divider />
       <List>
-        {[{label:"Channels",link:'/channels'},{label:"Languages",link:'/languages'}, {label:"Genres",link:'/genres'}].map((row, index) => (
+        {[{ label: "Channels", link: '/channels' }, { label: "Languages", link: '/languages' }, { label: "Genres", link: '/genres' }].map((row, index) => (
           <ListItem key={index + "hey4"} disablePadding>
-            <ListItemButton  to={row.link} className={ row.link === location?.pathname? "button-animation-1" : "button-animation" }>
+            <ListItemButton to={row.link} className={row.link === location?.pathname ? "button-animation-1" : "button-animation"}>
               <ListItemIcon>
                 {index === 0 ? (
                   <MovieFilterIcon />
@@ -95,7 +99,7 @@ function Layout(props) {
       >
         {Data.HeaderOptions.map((row, index) => (
           <ListItem key={index + "hey6"} disablePadding>
-            <ListItemButton to={row.link}  className={ row.link === location?.pathname? "button-animation-1" : "button-animation" }>
+            <ListItemButton to={row.link} className={row.link === location?.pathname ? "button-animation-1" : "button-animation"}>
               <ListItemIcon>
                 {index === 0 ? (
                   <MovieFilterIcon />
@@ -120,83 +124,9 @@ function Layout(props) {
     <Box sx={{ display: "flex", backgroundColor: StdbgColor, color: "black" }}>
       <CssBaseline />
       {/* Navbar */}
-      <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-          backgroundColor: StdbgColor,
-          color: "black",
-        }}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Grid
-            container
-            justifyContent="space-between"
-            alignItems="center"
-            spacing={{ xs: 0, sm: 0, md: 1 }}
-          >
-            <Grid item xs={0} sm={3} md={5} lg={6.5}>
-              <Grid
-                container
-                sx={{
-                  display: {
-                    xs: "none",
-                    sm: "none",
-                    md: "none",
-                    xl: "flex",
-                    lg: "flex",
-                  },
-                }}
-              >
-                {Data.HeaderOptions.map((row, index) => {
-                  return (
-                    <Grid item xs={2.2} key={index + "hey"}>
-                      <Button
-                        variant="text"
-                        to={row.link}
-                        className={
-                          row.link === location?.pathname
-                            ? "button-animation-1"
-                            : "button-animation"
-                        }
-                      >
-                        {row.label}
-                      </Button>
-                    </Grid>
-                  );
-                })}
-              </Grid>
-            </Grid>
-            <Grid item xs={6} sm={5} md={4} lg={2}>
-              <TextField
-                id="outlined-basic"
-                label="Search"
-                variant="outlined"
-                size="small"
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={2} sm={2} md={1} lg={1.5} align={"right"}>
-              <Button className="button-animation">Login</Button>
-            </Grid>
-            <Grid item xs={4} sm={2} md={1.5} lg={1.5} align={"right"}>
-              <Button className="button-animation">Subscribe</Button>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
+      <ProductNavbar array={Data.HeaderOptions}/>
 
-       {/* Side navbar */}
+      {/* Side navbar */}
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -254,8 +184,8 @@ function Layout(props) {
           height: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
-      {/* Content */}
-      
+        {/* Content */}
+
         <Toolbar />
 
         {/* Main Carousel- Image slider */}
@@ -263,80 +193,28 @@ function Layout(props) {
           sx={{
             overflow: "hidden",
             marginBottom: "4%",
-            height: {xs:'60vh',sm:'60vh',md:"60vh !important", lg:"60vh !important"},
-            width:'100%',
+            height: { xs: '60vh', sm: '60vh', md: "60vh !important", lg: "60vh !important" },
+            width: '100%',
           }}
         >
-          <MainCarousel infiniteLoop autoPlay={true} showThumbs={false}>
-            {Data?.sliderImages.map((row, index) => {
-              const { src, description, label } = row;
-              return (
-                <div key={index + "hey2"} className="main-carousel">
-                  <img src={src} alt="" style={{ height: "60vh " }} />
-                  <span
-                    className="legend"
-                    style={{
-                      position: "absolute",
-                      top: "40%",
-                      height: "fit-content",
-                      width: "80%",
-                      background: "transparent",
-                      textAlign: "left",
-                    }}
-                  >
-                    <Typography variant="h2"> {label}</Typography>
-                    <h3> {description}</h3>
-                    <Button variant="contained">Watch Now</Button>
-                  </span>
-                </div>
-              );
-            })}
-          </MainCarousel>
+          <LargeCarousel array={Data?.sliderImages} />
         </Box>
 
-        {/* Recommended for you */}
-        <Box
-          sx={{
-            marginBottom: "40px",
-            width: {xs:'50vh',sm:'50vh',md:"60vh !important", lg:"100% !important"},
-          }}
-        >
-          <h2>Recommended for you</h2>
-          <CarouselFunction array={Data?.Recommended} />
-        </Box>
+        {/* Small Scrollbars */}
+        {SmallImageScroll.map((row, index) => {
+          return (
+            <Box key={index + 'smallScroll'}
+              sx={{
+                marginBottom: "40px",
+                width: { xs: '50vh', sm: '50vh', md: "60vh !important", lg: "100% !important" },
+              }}
+            >
+              <h2>{row.label}</h2>
+              <CarouselFunction array={row.array} />
+            </Box>
+          )
+        })}
 
-        {/* Animated Adventures */}
-        <Box
-          sx={{
-            marginBottom: "40px",
-            width: {xs:'50vh',sm:'50vh',md:"60vh !important", lg:"100% !important"},
-          }}
-        >
-          <h2>Animated Adventures</h2>
-          <CarouselFunction array={Data?.AnimatedAdventures} />
-        </Box>
-
-        {/* Popular Shows/Drama */}
-        <Box
-          sx={{
-            marginBottom: "40px",
-            width: {xs:'50vh',sm:'50vh',md:"60vh !important", lg:"100% !important"},
-          }}
-        >
-          <h2>Popular Shows/Drama</h2>
-          <CarouselFunction array={Data?.Popular} />
-        </Box>
-
-        {/* New & Upcoming */}
-        <Box
-          sx={{
-            marginBottom: "40px",
-            width: {xs:'50vh',sm:'50vh',md:"60vh !important", lg:"100% !important"},
-          }}
-        >
-          <h2>New & Upcoming</h2>
-          <CarouselFunction array={Data?.NewUpcoming} />
-        </Box>
       </Box>
     </Box>
   );

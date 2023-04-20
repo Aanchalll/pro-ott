@@ -143,5 +143,6 @@ export const Data = {
       label: "News",
       link: "/news",
     },
-  ]
+  ],
+  
 };
