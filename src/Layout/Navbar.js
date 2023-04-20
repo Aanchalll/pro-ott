@@ -5,14 +5,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useLocation } from "react-router-dom";
 
 export const ProductNavbar = (props) => {
-    const [mobileOpen, setMobileOpen] = React.useState(false);
     const location = useLocation();
-
-    const { array, } = props
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
-    };
-
+    const { array, handleDrawerToggle } = props
+   
     return (
         <AppBar
             position="fixed"
@@ -57,7 +52,7 @@ export const ProductNavbar = (props) => {
                                     <Grid item xs={2.2} key={index + "hey"}>
                                         <Button
                                             variant="text"
-                                            to={row.link}
+                                            // to={row.link}
                                             className={
                                                 row.link === location?.pathname
                                                     ? "button-animation-1"

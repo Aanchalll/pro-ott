@@ -60,8 +60,9 @@ function Layout(props) {
       <List>
         {[{ label: "Channels", link: '/channels' }, { label: "Languages", link: '/languages' }, { label: "Genres", link: '/genres' }].map((row, index) => (
           <ListItem key={index + "hey4"} disablePadding>
-            <ListItemButton to={row.link} className={row.link === location?.pathname ? "button-animation-1" : "button-animation"}>
+            <ListItemButton  className={row.link === location?.pathname ? "button-animation-1" : "button-animation"}>
               <ListItemIcon>
+              {/* to={row.link} */}
                 {index === 0 ? (
                   <MovieFilterIcon />
                 ) : index === 1 ? (
@@ -97,9 +98,10 @@ function Layout(props) {
           },
         }}
       >
+      {/* to={row.link} */}
         {Data.HeaderOptions.map((row, index) => (
           <ListItem key={index + "hey6"} disablePadding>
-            <ListItemButton to={row.link} className={row.link === location?.pathname ? "button-animation-1" : "button-animation"}>
+            <ListItemButton  className={row.link === location?.pathname ? "button-animation-1" : "button-animation"}>
               <ListItemIcon>
                 {index === 0 ? (
                   <MovieFilterIcon />
@@ -123,8 +125,9 @@ function Layout(props) {
   return (
     <Box sx={{ display: "flex", backgroundColor: StdbgColor, color: "black" }}>
       <CssBaseline />
+
       {/* Navbar */}
-      <ProductNavbar array={Data.HeaderOptions}/>
+      <ProductNavbar array={Data.HeaderOptions} handleDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen}/>
 
       {/* Side navbar */}
       <Box
