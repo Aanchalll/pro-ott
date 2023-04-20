@@ -256,14 +256,8 @@ function Layout(props) {
           sx={{
             overflow: "hidden",
             marginBottom: "4%",
-            height: "60vh !important",
-            display: {
-              xs: "none",
-              sm: "none",
-              md: "block",
-              xl: "block",
-              lg: "block",
-            },
+            height: {xs:'60vh',sm:'60vh',md:"60vh !important", lg:"60vh !important"},
+            width:'100%',
           }}
         >
           <MainCarousel infiniteLoop autoPlay={true} showThumbs={false}>
@@ -297,13 +291,7 @@ function Layout(props) {
         <Box
           sx={{
             marginBottom: "40px",
-            display: {
-              xs: "none",
-              sm: "none",
-              md: "block",
-              xl: "block",
-              lg: "block",
-            },
+            width: {xs:'50vh',sm:'50vh',md:"60vh !important", lg:"100% !important"},
           }}
         >
           <h2>Recommended for you</h2>
@@ -314,13 +302,7 @@ function Layout(props) {
         <Box
           sx={{
             marginBottom: "40px",
-            display: {
-              xs: "none",
-              sm: "none",
-              md: "block",
-              xl: "block",
-              lg: "block",
-            },
+            width: {xs:'50vh',sm:'50vh',md:"60vh !important", lg:"100% !important"},
           }}
         >
           <h2>Animated Adventures</h2>
@@ -331,13 +313,7 @@ function Layout(props) {
         <Box
           sx={{
             marginBottom: "40px",
-            display: {
-              xs: "none",
-              sm: "none",
-              md: "block",
-              xl: "block",
-              lg: "block",
-            },
+            width: {xs:'50vh',sm:'50vh',md:"60vh !important", lg:"100% !important"},
           }}
         >
           <h2>Popular Shows/Drama</h2>
@@ -348,13 +324,7 @@ function Layout(props) {
         <Box
           sx={{
             marginBottom: "40px",
-            display: {
-              xs: "none",
-              sm: "none",
-              md: "block",
-              xl: "block",
-              lg: "block",
-            },
+            width: {xs:'50vh',sm:'50vh',md:"60vh !important", lg:"100% !important"},
           }}
         >
           <h2>New & Upcoming</h2>
@@ -386,12 +356,12 @@ const responsive = {
     items: 3,
   },
   tablet: {
-    breakpoint: { max: 900, min: 0 },
+    breakpoint: { max: 900, min: 600 },
     items: 2,
   },
   mobile: {
-    breakpoint: { max: 0, min: 0 },
-    items: 2,
+    breakpoint: { max: 600, min: 0 },
+    items: 1,
   },
 };
 
